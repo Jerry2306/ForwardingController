@@ -1,0 +1,28 @@
+﻿namespace ForwardingUtils.SharedItems.JsonModel.Entity
+{
+    public class ConnsEntity
+    {
+        public int count { get; set; }
+        public int gauge { get; set; }
+        public int rate1 { get; set; }
+        public int rate5 { get; set; }
+        public int rate15 { get; set; }
+        public int p50 { get; set; }
+        public int p90 { get; set; }
+        public int p95 { get; set; }
+        public int p99 { get; set; }
+
+        public ConnsEntity()
+        {
+            count = 0;
+            gauge = 0;
+            rate1 = 0;
+            rate5 = 0;
+            rate15 = 0;
+            p50 = 0;
+            p90 = 0;
+            p95 = 0;
+            p99 = 0;
+        }
+    }
+}

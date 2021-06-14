@@ -41,7 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IForwardManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\ForwardingUtils.SharedItems\ForwardingUtils.SharedItems.csproj">
+      <Project>{72D936B7-EE29-4172-B3B8-086CAEE31E61}</Project>
+      <Name>ForwardingUtils.SharedItems</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

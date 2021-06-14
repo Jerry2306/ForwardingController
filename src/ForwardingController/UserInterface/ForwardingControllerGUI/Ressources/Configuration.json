@@ -6,7 +6,9 @@
 		"ConnectionString": ""
 	},
 	"ForwardingConfiguration": {
-		"APIUrl": "http://localhost:4040"
+		"ForwardFilesFolder": "./Forwards",
+		"StartBatchFile": "./start.bat",
+		"APIUrl": "http://localhost:4040/api"
 	},
 	"LoggingConfiguration": {
 		"LogLevel": 0

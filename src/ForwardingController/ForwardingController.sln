@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsUtils.Contract", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsUtils", "SettingsUtils\SettingsUtils\SettingsUtils.csproj", "{502B9CC1-8AE1-426A-8FBE-92AB4D597F15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForwardingUtils.SharedItems", "CrossCutting\ForwardingUtils.SharedItems\ForwardingUtils.SharedItems.csproj", "{72D936B7-EE29-4172-B3B8-086CAEE31E61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{502B9CC1-8AE1-426A-8FBE-92AB4D597F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{502B9CC1-8AE1-426A-8FBE-92AB4D597F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{502B9CC1-8AE1-426A-8FBE-92AB4D597F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D936B7-EE29-4172-B3B8-086CAEE31E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D936B7-EE29-4172-B3B8-086CAEE31E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D936B7-EE29-4172-B3B8-086CAEE31E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D936B7-EE29-4172-B3B8-086CAEE31E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +118,7 @@ Global
 		{B20511EB-9487-4C14-89FC-F7D59AC7805A} = {406649BB-4EE5-4803-829E-58E879E1A323}
 		{D581802F-1A35-48C2-9886-93D8933D1CD3} = {8654F32A-28DA-4BBD-81AB-DB1B0BADBAE9}
 		{502B9CC1-8AE1-426A-8FBE-92AB4D597F15} = {8654F32A-28DA-4BBD-81AB-DB1B0BADBAE9}
+		{72D936B7-EE29-4172-B3B8-086CAEE31E61} = {406649BB-4EE5-4803-829E-58E879E1A323}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68040CE1-9A7B-4591-915F-5D294D3BBF6D}

@@ -17,7 +17,8 @@ namespace NinjectBindingManaging
             {
                 Bindings = new INinjectModule[]
                 {
-                    new SettingsUtilsBindings()
+                    new SettingsUtilsBindings(),
+                    new ForwardingUtilsBindings()
                 };
             }
             catch (Exception exc)

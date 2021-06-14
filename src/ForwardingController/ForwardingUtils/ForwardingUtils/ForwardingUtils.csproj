@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForwardManager.cs" />
+    <Compile Include="Helper\TaskAwaiter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\ForwardingUtils.SharedItems\ForwardingUtils.SharedItems.csproj">
+      <Project>{72D936B7-EE29-4172-B3B8-086CAEE31E61}</Project>
+      <Name>ForwardingUtils.SharedItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrossCutting\SharedItems\SharedItems.csproj">
+      <Project>{B20511EB-9487-4C14-89FC-F7D59AC7805A}</Project>
+      <Name>SharedItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SettingsUtils\SettingsUtils.Contract\SettingsUtils.Contract.csproj">
+      <Project>{D581802F-1A35-48C2-9886-93D8933D1CD3}</Project>
+      <Name>SettingsUtils.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForwardingUtils.Contract\ForwardingUtils.Contract.csproj">
+      <Project>{4EB82CC4-E4C3-4C88-BC01-A1C8126175FA}</Project>
+      <Name>ForwardingUtils.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
