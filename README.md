@@ -1,2 +1,2 @@
-# ForwardingManager
-Tunnel forwarding manager, currently based on Ngrok
+# ForwardingController
+Tunnel forwarding controller, currently based on Ngrok
