@@ -36,6 +36,8 @@ namespace ForwardingControllerGUI
                 excBuilder.AppendLine(exc.GetFormattedMessage());
                 excBuilder.AppendLine($"Stacktrace: {exc.StackTrace}");
                 MessageBox.Show(excBuilder.ToString());
+
+                Current.Shutdown(-1);
             }
         }
     }
