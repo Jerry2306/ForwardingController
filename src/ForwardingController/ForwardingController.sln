@@ -31,6 +31,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjectBindingManaging", "Infrastructure\NinjectBindingManaging\NinjectBindingManaging.csproj", "{C4216E92-846A-4216-9687-8C88657FB2D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{406649BB-4EE5-4803-829E-58E879E1A323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedItems", "CrossCutting\SharedItems\SharedItems.csproj", "{B20511EB-9487-4C14-89FC-F7D59AC7805A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,10 @@ Global
 		{C4216E92-846A-4216-9687-8C88657FB2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4216E92-846A-4216-9687-8C88657FB2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4216E92-846A-4216-9687-8C88657FB2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B20511EB-9487-4C14-89FC-F7D59AC7805A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20511EB-9487-4C14-89FC-F7D59AC7805A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20511EB-9487-4C14-89FC-F7D59AC7805A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B20511EB-9487-4C14-89FC-F7D59AC7805A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +95,7 @@ Global
 		{BB089863-D177-4E94-B3BF-A300026CD09D} = {0EF609C7-1B94-4556-8175-A614F115D4EF}
 		{C3320FFE-3A55-42B0-878A-1E5AFAFBF20D} = {0EF609C7-1B94-4556-8175-A614F115D4EF}
 		{C4216E92-846A-4216-9687-8C88657FB2D3} = {59360CE4-7556-46BD-B4EC-7000DC7CD192}
+		{B20511EB-9487-4C14-89FC-F7D59AC7805A} = {406649BB-4EE5-4803-829E-58E879E1A323}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68040CE1-9A7B-4591-915F-5D294D3BBF6D}
