@@ -1,0 +1,14 @@
+﻿{
+	"CommonConfiguration": {
+		"LoadCustomModules": true
+	},
+	"DatabaseConfiguration": {
+		"ConnectionString": ""
+	},
+	"ForwardingConfiguration": {
+		"APIUrl": "http://localhost:4040"
+	},
+	"LoggingConfiguration": {
+		"LogLevel": 0
+	}
+}

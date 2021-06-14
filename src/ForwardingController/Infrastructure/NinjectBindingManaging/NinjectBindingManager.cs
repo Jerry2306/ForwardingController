@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using Ninject.Modules;
+using NinjectBindingManaging.Bindings;
 using System;
 
 namespace NinjectBindingManaging
@@ -8,13 +9,15 @@ namespace NinjectBindingManaging
     {
         public INinjectModule[] Bindings { get; }
 
-        private static IKernel _kernelInstance = null;
+        private static IKernel _kernelInstance;
+
         public NinjectBindingManager()
         {
             try
             {
                 Bindings = new INinjectModule[]
                 {
+                    new SettingsUtilsBindings()
                 };
             }
             catch (Exception exc)

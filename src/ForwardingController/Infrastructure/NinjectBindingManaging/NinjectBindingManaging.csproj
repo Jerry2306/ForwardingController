@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings\SettingsUtilsBindings.cs" />
     <Compile Include="NinjectBindingManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,9 +56,15 @@
       <Project>{B20511EB-9487-4C14-89FC-F7D59AC7805A}</Project>
       <Name>SharedItems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SettingsUtils\SettingsUtils.Contract\SettingsUtils.Contract.csproj">
+      <Project>{D581802F-1A35-48C2-9886-93D8933D1CD3}</Project>
+      <Name>SettingsUtils.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SettingsUtils\SettingsUtils\SettingsUtils.csproj">
+      <Project>{502B9CC1-8AE1-426A-8FBE-92AB4D597F15}</Project>
+      <Name>SettingsUtils</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Bindings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -114,6 +114,16 @@
       <Project>{C4216E92-846A-4216-9687-8C88657FB2D3}</Project>
       <Name>NinjectBindingManaging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\SettingsUtils\SettingsUtils.Contract\SettingsUtils.Contract.csproj">
+      <Project>{D581802F-1A35-48C2-9886-93D8933D1CD3}</Project>
+      <Name>SettingsUtils.Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Ressources\Configuration.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\..\packages\Fody.6.5.1\build\Fody.targets')" />
