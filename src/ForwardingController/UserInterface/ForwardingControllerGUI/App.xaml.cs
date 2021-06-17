@@ -83,6 +83,12 @@ namespace ForwardingControllerGUI
             });
         }
 
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            DisplayException("An unhandled exception occured. The programm may be able to stay running:", e.Exception);
+        }
+
         private void DisplayException(string mainMessage, Exception exc)
         {
             string excString;
