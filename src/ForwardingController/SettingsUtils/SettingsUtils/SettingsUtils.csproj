@@ -50,6 +50,10 @@
     <Compile Include="SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\SettingsUtils.SharedItems\SettingsUtils.SharedItems.csproj">
+      <Project>{145798D8-3C76-446F-AD29-395AA457C265}</Project>
+      <Name>SettingsUtils.SharedItems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrossCutting\SharedItems\SharedItems.csproj">
       <Project>{B20511EB-9487-4C14-89FC-F7D59AC7805A}</Project>
       <Name>SharedItems</Name>

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SettingsUtils.SharedItems.ConfigurationEntities;
 using SharedItems;
-using SharedItems.ConfigurationEntities;
 using System.Collections.Generic;
 using System.IO;
 

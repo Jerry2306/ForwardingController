@@ -2,7 +2,7 @@
 using CustomModuleUtils.Contract;
 using Ninject;
 using SettingsUtils.Contract;
-using SharedItems.ConfigurationEntities;
+using SettingsUtils.SharedItems.ConfigurationEntities;
 using SharedItems.Extensions;
 using System;
 using System.Collections.Generic;

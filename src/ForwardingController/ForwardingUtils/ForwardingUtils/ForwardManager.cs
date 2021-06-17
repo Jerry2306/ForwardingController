@@ -4,7 +4,7 @@ using ForwardingUtils.SharedItems.JsonModel.Request;
 using ForwardingUtils.SharedItems.JsonModel.Response;
 using Newtonsoft.Json;
 using SettingsUtils.Contract;
-using SharedItems.ConfigurationEntities;
+using SettingsUtils.SharedItems.ConfigurationEntities;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;

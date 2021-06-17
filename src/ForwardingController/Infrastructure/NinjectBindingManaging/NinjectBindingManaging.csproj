@@ -54,9 +54,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\SettingsUtils.SharedItems\SettingsUtils.SharedItems.csproj">
+      <Project>{145798d8-3c76-446f-ad29-395aa457c265}</Project>
+      <Name>SettingsUtils.SharedItems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrossCutting\SharedItems\SharedItems.csproj">
       <Project>{B20511EB-9487-4C14-89FC-F7D59AC7805A}</Project>
       <Name>SharedItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CustomModuleUtils\CustomModules\CustomModule.Contract\CustomModule.Contract.csproj">
+      <Project>{10582f35-561e-49a3-b240-055465468127}</Project>
+      <Name>CustomModule.Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\CustomModuleUtils\CustomModuleUtils.Contract\CustomModuleUtils.Contract.csproj">
       <Project>{69784AF4-32DE-4C03-89F1-EEABBBBBBBF9}</Project>

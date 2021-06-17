@@ -6,26 +6,31 @@ using System.Windows;
 
 namespace DefaultModule
 {
-    class ModuleController : ICustomModuleController
+    public class ModuleController : ICustomModuleController
     {
+        public string Name { get; set; }
         public IDictionary<string, string> Configuration { get; set; }
 
         private IKernel _kernel;
         private Thread _t;
-        private bool isRunning = false;
+        private bool _isRunning = false;
+        public ModuleController()
+        {
+            Name = "Default";
+        }
+
         public void Run(IKernel kernel)
         {
             _kernel = kernel;
 
-            _t = new Thread(ThreadWork);
-            _t.IsBackground = true;
+            _t = new Thread(ThreadWork) { IsBackground = true };
             _t.SetApartmentState(ApartmentState.STA);
             _t.Start();
         }
 
         public void Stop()
         {
-            isRunning = false;
+            _isRunning = false;
             while (_t.ThreadState != ThreadState.Stopped)
             {
                 Thread.Sleep(10);
@@ -34,9 +39,9 @@ namespace DefaultModule
 
         private void ThreadWork()
         {
-            isRunning = true;
+            _isRunning = true;
 
-            while (isRunning)
+            while (_isRunning)
             {
                 Thread.Sleep(5000);
                 MessageBox.Show(Configuration["TestConfiguration"]);

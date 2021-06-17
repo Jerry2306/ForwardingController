@@ -10,7 +10,7 @@ namespace SettingsUtils
 {
     public class SettingsManager : ISettingsManager
     {
-        private IDictionary<string, object> _settingsRegister;
+        private readonly IDictionary<string, object> _settingsRegister;
         public SettingsManager()
         {
             _settingsRegister = new SettingsLoader().LoadSettings(ConfigurationManager.AppSettings["ConfigurationJsonFile"]);

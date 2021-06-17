@@ -1,4 +1,4 @@
-﻿namespace SharedItems.ConfigurationEntities
+﻿namespace SettingsUtils.SharedItems.ConfigurationEntities
 {
     public class AppSettings
     {

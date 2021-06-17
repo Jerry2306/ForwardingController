@@ -1,7 +1,8 @@
 ﻿using CustomModule.Contract;
 using CustomModuleUtils.Contract;
+using CustomModuleUtils.Helper;
 using SettingsUtils.Contract;
-using SharedItems.ConfigurationEntities;
+using SettingsUtils.SharedItems.ConfigurationEntities;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -4,6 +4,7 @@ using Ninject;
 using NinjectBindingManaging;
 using SharedItems.Extensions;
 using System;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,13 +21,36 @@ namespace ForwardingControllerGUI
         {
             base.OnStartup(e);
 
-            IKernel kernel;
-            MainWindowViewModel vm;
+            var kernel = GetKernel();
+
+            var vm = LoadMainWindowAndViewModel(kernel);
+
+            LoadCustomModules(kernel, vm);
+
+        }
+
+        private IKernel GetKernel()
+        {
             try
             {
-                kernel = new NinjectBindingManager().GetKernel();
-                vm = kernel.Get<MainWindowViewModel>();
+                return new NinjectBindingManager().GetKernel();
+            }
+            catch (Exception exc)
+            {
+                DisplayException("Fatal error at loading kernel:", exc);
+                Current.Shutdown(-1);
+            }
 
+            return null;
+        }
+
+        private MainWindowViewModel LoadMainWindowAndViewModel(IKernel kernel)
+        {
+            MainWindowViewModel vm = null;
+
+            try
+            {
+                vm = kernel.Get<MainWindowViewModel>();
                 var window = new MainWindow
                 {
                     DataContext = vm,
@@ -37,16 +61,15 @@ namespace ForwardingControllerGUI
             }
             catch (Exception exc)
             {
-                var excBuilder = new StringBuilder();
-                excBuilder.AppendLine("Fatal error at loading main window:");
-                excBuilder.AppendLine(exc.GetFormattedMessage());
-                excBuilder.AppendLine($"Stacktrace: {exc.StackTrace}");
-                MessageBox.Show(excBuilder.ToString());
-
+                DisplayException("Fatal error at loading main window:", exc);
                 Current.Shutdown(-1);
-                return;
             }
 
+            return vm;
+        }
+
+        private void LoadCustomModules(IKernel kernel, MainWindowViewModel vm)
+        {
             Task.Run(() =>
             {
                 try
@@ -55,13 +78,27 @@ namespace ForwardingControllerGUI
                 }
                 catch (Exception exc)
                 {
-                    var excBuilder = new StringBuilder();
-                    excBuilder.AppendLine("Error at loading custom modules:");
-                    excBuilder.AppendLine(exc.GetFormattedMessage());
-                    excBuilder.AppendLine($"Stacktrace: {exc.StackTrace}");
-                    MessageBox.Show(excBuilder.ToString());
+                    DisplayException("Error at loading custom modules:", exc);
                 }
             });
+        }
+
+        private void DisplayException(string mainMessage, Exception exc)
+        {
+            string excString;
+
+            if (exc != null)
+            {
+                var excBuilder = new StringBuilder();
+                excBuilder.AppendLine(mainMessage);
+                excBuilder.AppendLine(exc.GetFormattedMessage());
+                excBuilder.AppendLine($"Stacktrace: {exc.StackTrace}");
+                excString = excBuilder.ToString();
+            }
+            else
+                excString = mainMessage;
+
+            MessageBox.Show(excString);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace CustomModuleUtils
+namespace CustomModuleUtils.Helper
 {
     public class CustomModuleConfigurationSplitter
     {
