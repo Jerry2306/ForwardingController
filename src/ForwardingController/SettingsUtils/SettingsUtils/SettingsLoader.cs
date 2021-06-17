@@ -15,7 +15,7 @@ namespace SettingsUtils
             if (!File.Exists(configFile))
                 throw new FileNotFoundException($"Configuration file {configFile} couldn't be found!");
 
-            dic[Const.ForwardingControllerConfiguration] = JsonConvert.DeserializeObject<ForwardingControllerConfiguration>(File.ReadAllText(configFile));
+            dic[Const.AppSettings] = JsonConvert.DeserializeObject<AppSettings>(File.ReadAllText(configFile));
 
             return dic;
         }

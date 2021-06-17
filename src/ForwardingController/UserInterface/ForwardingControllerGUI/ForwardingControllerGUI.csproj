@@ -110,6 +110,10 @@
       <Project>{b20511eb-9487-4c14-89fc-f7d59ac7805a}</Project>
       <Name>SharedItems</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CustomModuleUtils\CustomModuleUtils.Contract\CustomModuleUtils.Contract.csproj">
+      <Project>{69784AF4-32DE-4C03-89F1-EEABBBBBBBF9}</Project>
+      <Name>CustomModuleUtils.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\NinjectBindingManaging\NinjectBindingManaging.csproj">
       <Project>{C4216E92-846A-4216-9687-8C88657FB2D3}</Project>
       <Name>NinjectBindingManaging</Name>

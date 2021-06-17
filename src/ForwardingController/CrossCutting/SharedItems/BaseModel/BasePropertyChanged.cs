@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace SharedItems.ViewModelBase
+namespace SharedItems.BaseModel
 {
     public class BasePropertyChanged : INotifyPropertyChanged
     {

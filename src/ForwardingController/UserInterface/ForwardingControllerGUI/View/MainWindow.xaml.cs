@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ForwardingControllerGUI.ViewModel;
 using Ninject;
 
 namespace ForwardingControllerGUI.View
@@ -21,6 +22,7 @@ namespace ForwardingControllerGUI.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel VM { get; set; }
         public MainWindow()
         {
             InitializeComponent();

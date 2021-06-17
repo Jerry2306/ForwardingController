@@ -5,7 +5,9 @@ using NinjectBindingManaging;
 using SharedItems.Extensions;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using CustomModuleUtils.Contract;
 
 namespace ForwardingControllerGUI
 {
@@ -18,13 +20,17 @@ namespace ForwardingControllerGUI
         {
             base.OnStartup(e);
 
+            IKernel kernel;
+            MainWindowViewModel vm;
             try
             {
-                var kernel = new NinjectBindingManager().GetKernel();
+                kernel = new NinjectBindingManager().GetKernel();
+                vm = kernel.Get<MainWindowViewModel>();
 
                 var window = new MainWindow
                 {
-                    DataContext = kernel.Get<MainWindowViewModel>()
+                    DataContext = vm,
+                    VM = vm
                 };
 
                 window.Show();
@@ -38,7 +44,24 @@ namespace ForwardingControllerGUI
                 MessageBox.Show(excBuilder.ToString());
 
                 Current.Shutdown(-1);
+                return;
             }
+
+            Task.Run(() =>
+            {
+                try
+                {
+                    kernel.Get<ICustomModuleManager>().RunCustomModules(kernel);
+                }
+                catch (Exception exc)
+                {
+                    var excBuilder = new StringBuilder();
+                    excBuilder.AppendLine("Error at loading custom modules:");
+                    excBuilder.AppendLine(exc.GetFormattedMessage());
+                    excBuilder.AppendLine($"Stacktrace: {exc.StackTrace}");
+                    MessageBox.Show(excBuilder.ToString());
+                }
+            });
         }
     }
 }

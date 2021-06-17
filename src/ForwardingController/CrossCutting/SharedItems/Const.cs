@@ -8,6 +8,6 @@ namespace SharedItems
 {
     public class Const
     {
-        public const string ForwardingControllerConfiguration = "ForwardingControllerConfiguration";
+        public const string AppSettings = "AppSettings";
     }
 }

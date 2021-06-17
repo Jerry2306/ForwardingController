@@ -42,14 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationEntities\CommonConfigurationEntity.cs" />
+    <Compile Include="ConfigurationEntities\CustomModulesConfigurationEntity.cs" />
     <Compile Include="ConfigurationEntities\DatabaseConfigurationEntity.cs" />
     <Compile Include="ConfigurationEntities\ForwardingConfigurationEntity.cs" />
-    <Compile Include="ConfigurationEntities\ForwardingControllerConfiguration.cs" />
+    <Compile Include="ConfigurationEntities\AppSettings.cs" />
     <Compile Include="ConfigurationEntities\LoggingConfigurationEntity.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModelBase\BasePropertyChanged.cs" />
+    <Compile Include="BaseModel\BasePropertyChanged.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

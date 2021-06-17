@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings\CustomModuleUtilsBindings.cs" />
     <Compile Include="Bindings\ForwardingUtilsBindings.cs" />
     <Compile Include="Bindings\SettingsUtilsBindings.cs" />
     <Compile Include="NinjectBindingManager.cs" />
@@ -56,6 +57,14 @@
     <ProjectReference Include="..\..\CrossCutting\SharedItems\SharedItems.csproj">
       <Project>{B20511EB-9487-4C14-89FC-F7D59AC7805A}</Project>
       <Name>SharedItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CustomModuleUtils\CustomModuleUtils.Contract\CustomModuleUtils.Contract.csproj">
+      <Project>{69784AF4-32DE-4C03-89F1-EEABBBBBBBF9}</Project>
+      <Name>CustomModuleUtils.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CustomModuleUtils\CustomModuleUtils\CustomModuleUtils.csproj">
+      <Project>{BB56E4D6-6B73-4FDC-9944-634B67E10844}</Project>
+      <Name>CustomModuleUtils</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ForwardingUtils\ForwardingUtils.Contract\ForwardingUtils.Contract.csproj">
       <Project>{4EB82CC4-E4C3-4C88-BC01-A1C8126175FA}</Project>

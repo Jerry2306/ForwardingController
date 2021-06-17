@@ -1,6 +1,6 @@
 ﻿{
 	"CommonConfiguration": {
-		"LoadCustomModules": true
+		
 	},
 	"DatabaseConfiguration": {
 		"ConnectionString": ""
@@ -12,5 +12,11 @@
 	},
 	"LoggingConfiguration": {
 		"LogLevel": 0
+	},
+	"CustomModulesConfiguration": {
+		"CustomModulesFolder": "./CustomModules",
+		"LoadCustomModules": true,
+		"ModuleLoadTimeout": 30,
+		"ModuleStopTimeout": 30
 	}
 }

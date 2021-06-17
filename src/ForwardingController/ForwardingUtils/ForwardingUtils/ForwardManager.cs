@@ -14,13 +14,13 @@ namespace ForwardingUtils
 {
     public class ForwardManager : IForwardManager, IDisposable
     {
-        private readonly ForwardingControllerConfiguration _config;
+        private readonly AppSettings _config;
 
         private HttpClientHandler _httpClientHandler;
         private HttpClient _httpClient;
         public ForwardManager(ISettingsManager settingsManager)
         {
-            _config = settingsManager.Get<ForwardingControllerConfiguration>();
+            _config = settingsManager.Get<AppSettings>();
 
             _httpClientHandler = new HttpClientHandler();
             _httpClient = new HttpClient(_httpClientHandler);

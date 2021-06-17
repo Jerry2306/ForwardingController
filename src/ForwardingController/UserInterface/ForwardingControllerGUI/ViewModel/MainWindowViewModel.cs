@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using SharedItems;
-using SharedItems.ViewModelBase;
+﻿using SharedItems.BaseModel;
 
 namespace ForwardingControllerGUI.ViewModel
 {
@@ -9,6 +6,7 @@ namespace ForwardingControllerGUI.ViewModel
     {
         public MainWindowViewModel()
         {
+
         }
     }
 }

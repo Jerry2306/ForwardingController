@@ -18,6 +18,7 @@ namespace NinjectBindingManaging
                 Bindings = new INinjectModule[]
                 {
                     new SettingsUtilsBindings(),
+                    new CustomModuleUtilsBindings(),
                     new ForwardingUtilsBindings()
                 };
             }

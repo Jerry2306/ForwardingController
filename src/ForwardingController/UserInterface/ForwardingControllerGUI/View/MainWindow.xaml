@@ -7,7 +7,5 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="{Binding Test, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="289,140,0,0" VerticalAlignment="Top"/>
-
     </Grid>
 </Window>
