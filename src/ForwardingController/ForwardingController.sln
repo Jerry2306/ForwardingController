@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomModule.Contract", "Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsUtils.SharedItems", "CrossCutting\SettingsUtils.SharedItems\SettingsUtils.SharedItems.csproj", "{145798D8-3C76-446F-AD29-395AA457C265}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseUtils.SharedItems", "CrossCutting\DatabaseUtils.SharedItems\DatabaseUtils.SharedItems.csproj", "{611EE9EF-139C-46F1-AD31-E012C64E530A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{145798D8-3C76-446F-AD29-395AA457C265}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{145798D8-3C76-446F-AD29-395AA457C265}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{145798D8-3C76-446F-AD29-395AA457C265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611EE9EF-139C-46F1-AD31-E012C64E530A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611EE9EF-139C-46F1-AD31-E012C64E530A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611EE9EF-139C-46F1-AD31-E012C64E530A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611EE9EF-139C-46F1-AD31-E012C64E530A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +149,7 @@ Global
 		{D2678B5B-BD46-4501-B6B8-13B9AC081AE8} = {0CF4905E-3A4C-4FEE-8428-B72731CA1A4A}
 		{10582F35-561E-49A3-B240-055465468127} = {0CF4905E-3A4C-4FEE-8428-B72731CA1A4A}
 		{145798D8-3C76-446F-AD29-395AA457C265} = {406649BB-4EE5-4803-829E-58E879E1A323}
+		{611EE9EF-139C-46F1-AD31-E012C64E530A} = {406649BB-4EE5-4803-829E-58E879E1A323}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68040CE1-9A7B-4591-915F-5D294D3BBF6D}

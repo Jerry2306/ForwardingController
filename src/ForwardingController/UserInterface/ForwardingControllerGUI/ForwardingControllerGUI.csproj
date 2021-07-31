@@ -101,11 +101,18 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Ressources\Configuration.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\DatabaseUtils.SharedItems\DatabaseUtils.SharedItems.csproj">
+      <Project>{611EE9EF-139C-46F1-AD31-E012C64E530A}</Project>
+      <Name>DatabaseUtils.SharedItems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrossCutting\SharedItems\SharedItems.csproj">
       <Project>{b20511eb-9487-4c14-89fc-f7d59ac7805a}</Project>
       <Name>SharedItems</Name>
@@ -113,6 +120,10 @@
     <ProjectReference Include="..\..\CustomModuleUtils\CustomModuleUtils.Contract\CustomModuleUtils.Contract.csproj">
       <Project>{69784AF4-32DE-4C03-89F1-EEABBBBBBBF9}</Project>
       <Name>CustomModuleUtils.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DatabaseUtils\DatabaseUtils.Contract\DatabaseUtils.Contract.csproj">
+      <Project>{9A623190-194B-4945-8F3E-CF842285F6B6}</Project>
+      <Name>DatabaseUtils.Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\NinjectBindingManaging\NinjectBindingManaging.csproj">
       <Project>{C4216E92-846A-4216-9687-8C88657FB2D3}</Project>
@@ -124,11 +135,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <None Include="Ressources\Configuration.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\..\packages\Fody.6.5.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

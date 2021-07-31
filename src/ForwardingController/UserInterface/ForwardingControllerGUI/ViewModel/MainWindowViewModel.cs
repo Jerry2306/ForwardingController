@@ -1,4 +1,7 @@
-﻿using SharedItems.BaseModel;
+﻿using System;
+using DatabaseUtils.Contract;
+using DatabaseUtils.SharedItems.Entities;
+using SharedItems.BaseModel;
 
 namespace ForwardingControllerGUI.ViewModel
 {

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bindings\CustomModuleUtilsBindings.cs" />
+    <Compile Include="Bindings\DatabaseUtilsBindings.cs" />
     <Compile Include="Bindings\ForwardingUtilsBindings.cs" />
     <Compile Include="Bindings\SettingsUtilsBindings.cs" />
     <Compile Include="NinjectBindingManager.cs" />
@@ -54,6 +55,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\DatabaseUtils.SharedItems\DatabaseUtils.SharedItems.csproj">
+      <Project>{611EE9EF-139C-46F1-AD31-E012C64E530A}</Project>
+      <Name>DatabaseUtils.SharedItems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrossCutting\SettingsUtils.SharedItems\SettingsUtils.SharedItems.csproj">
       <Project>{145798d8-3c76-446f-ad29-395aa457c265}</Project>
       <Name>SettingsUtils.SharedItems</Name>
@@ -73,6 +78,14 @@
     <ProjectReference Include="..\..\CustomModuleUtils\CustomModuleUtils\CustomModuleUtils.csproj">
       <Project>{BB56E4D6-6B73-4FDC-9944-634B67E10844}</Project>
       <Name>CustomModuleUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DatabaseUtils\DatabaseUtils.Contract\DatabaseUtils.Contract.csproj">
+      <Project>{9A623190-194B-4945-8F3E-CF842285F6B6}</Project>
+      <Name>DatabaseUtils.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DatabaseUtils\DatabaseUtils\DatabaseUtils.csproj">
+      <Project>{ec50f96d-d7d0-430d-bb00-48c4bd833b4f}</Project>
+      <Name>DatabaseUtils</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ForwardingUtils\ForwardingUtils.Contract\ForwardingUtils.Contract.csproj">
       <Project>{4EB82CC4-E4C3-4C88-BC01-A1C8126175FA}</Project>

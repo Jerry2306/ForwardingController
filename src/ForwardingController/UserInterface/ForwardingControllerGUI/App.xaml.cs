@@ -26,7 +26,6 @@ namespace ForwardingControllerGUI
             var vm = LoadMainWindowAndViewModel(kernel);
 
             LoadCustomModules(kernel, vm);
-
         }
 
         private IKernel GetKernel()
