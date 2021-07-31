@@ -1,10 +1,10 @@
 ﻿using ForwardingUtils.Contract;
-using ForwardingUtils.Helper;
 using ForwardingUtils.SharedItems.JsonModel.Request;
 using ForwardingUtils.SharedItems.JsonModel.Response;
 using Newtonsoft.Json;
 using SettingsUtils.Contract;
 using SettingsUtils.SharedItems.ConfigurationEntities;
+using SharedItems.Helper;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,13 +12,13 @@ using System.Text;
 
 namespace ForwardingUtils
 {
-    public class ForwardManager : IForwardManager, IDisposable
+    public class NgrokForwardManager : IForwardManager, IDisposable
     {
         private readonly AppSettings _config;
 
         private HttpClientHandler _httpClientHandler;
         private HttpClient _httpClient;
-        public ForwardManager(ISettingsManager settingsManager)
+        public NgrokForwardManager(ISettingsManager settingsManager)
         {
             _config = settingsManager.Get<AppSettings>();
 

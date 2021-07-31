@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ForwardingUtils.Helper
+namespace SharedItems.Helper
 {
     public class TaskAwaiter
     {

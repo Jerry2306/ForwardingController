@@ -44,8 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ForwardManager.cs" />
-    <Compile Include="Helper\TaskAwaiter.cs" />
+    <Compile Include="NgrokForwardManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

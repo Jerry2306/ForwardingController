@@ -8,7 +8,7 @@ namespace NinjectBindingManaging.Bindings
     {
         public override void Load()
         {
-            Bind<IForwardManager>().To<ForwardManager>();
+            Bind<IForwardManager>().To<NgrokForwardManager>();
         }
     }
 }
