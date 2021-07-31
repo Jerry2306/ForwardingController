@@ -8,16 +8,12 @@ namespace DefaultModule
 {
     public class ModuleController : ICustomModuleController
     {
-        public string Name { get; set; }
+        public string Name => "Default";
         public IDictionary<string, string> Configuration { get; set; }
 
         private IKernel _kernel;
         private Thread _t;
         private bool _isRunning = false;
-        public ModuleController()
-        {
-            Name = "Default";
-        }
 
         public void Run(IKernel kernel)
         {

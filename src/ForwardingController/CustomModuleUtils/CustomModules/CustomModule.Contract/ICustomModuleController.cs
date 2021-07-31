@@ -5,7 +5,7 @@ namespace CustomModule.Contract
 {
     public interface ICustomModuleController
     {
-        string Name { get; set; }
+        string Name { get; }
         IDictionary<string, string> Configuration { get; set; }
         void Run(IKernel kernel);
         void Stop();
