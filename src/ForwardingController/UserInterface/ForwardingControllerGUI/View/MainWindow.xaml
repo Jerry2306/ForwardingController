@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ForwardingControllerGUI"
+        xmlns:vm="clr-namespace:ForwardingControllerGUI.ViewModel"
         mc:Ignorable="d"
-        Title="Forwarding Controller" Height="600" Width="1200" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
+        Title="Forwarding Controller" MinHeight="400" Height="600" Width="1200" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Border Background="#FF1D1A27" CornerRadius="40">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -23,12 +27,18 @@
 
             </StackPanel>
 
-            <StackPanel Name="SpMainMenu" Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
-                <RadioButton Name="BtnOverview" Tag="HomeAccount" Content="Übersicht" Style="{StaticResource MainMenuButtonTheme}" IsChecked="True"/>
+            <StackPanel Name="SpMainMenu" Grid.Column="0" Grid.Row="1" Margin="0,15,0,0" IsEnabled="{Binding IsNavigationEnabled}">
+                <RadioButton Name="BtnOverview" Tag="HomeAccount" Content="Übersicht" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding OverviewCommand}" IsChecked="True"/>
                 <RadioButton Name="BtnLogging" Tag="MonitorDashboard" Content="Logging" Style="{StaticResource MainMenuButtonTheme}"/>
                 <RadioButton Name="BtnModules" Tag="Workflow" Content="Module" Style="{StaticResource MainMenuButtonTheme}"/>
                 <RadioButton Name="BtnSettings" Tag="SettingsOutline" Content="Einstellungen" Style="{StaticResource MainMenuButtonTheme}"/>
+                <RadioButton Name="BtnClose" Tag="CloseBoxOutline" Content="Schließen" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding ExitCommand}" IsChecked="{Binding IsCloseButtnChecked}"/>
             </StackPanel>
+
+            <ContentControl Grid.Row="1" 
+                            Grid.Column="1"
+                            Content="{Binding CurrentView}"
+                            Margin="10"/>
         </Grid>
     </Border>
 </Window>

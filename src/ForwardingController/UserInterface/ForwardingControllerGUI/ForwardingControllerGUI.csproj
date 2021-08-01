@@ -70,6 +70,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="ViewModel\ExitUserControlViewModel.cs" />
+    <Compile Include="View\UserControls\ExitUserControl.xaml.cs">
+      <DependentUpon>ExitUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\OverviewUserControl.xaml.cs">
+      <DependentUpon>OverviewUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="Theme\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +95,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UserControls\ExitUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\OverviewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -144,10 +160,7 @@
       <Name>SettingsUtils.Contract</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\UserControls\" />
-    <Folder Include="View\UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\ForwardControllerLogo.png" />
   </ItemGroup>
