@@ -1,14 +1,13 @@
-﻿using ForwardingControllerGUI.View;
+﻿using CustomModuleUtils.Contract;
+using ForwardingControllerGUI.View;
 using ForwardingControllerGUI.ViewModel;
 using Ninject;
 using NinjectBindingManaging;
 using SharedItems.Extensions;
 using System;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using CustomModuleUtils.Contract;
 
 namespace ForwardingControllerGUI
 {

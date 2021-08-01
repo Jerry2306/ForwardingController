@@ -5,7 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ForwardingControllerGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-    </Grid>
+        Title="Forwarding Controller" Height="600" Width="1200" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
+    <Border Background="#FF1D1A27" CornerRadius="40">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="/Resources/ForwardControllerLogo.png" Margin="0,15,0,0"/>
+
+            <StackPanel Name="SpSecondaryMenu" Grid.ColumnSpan="2" MouseDown="SpTopMenu_MouseDown" Background="Transparent">
+
+            </StackPanel>
+
+            <StackPanel Name="SpMainMenu" Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
+                <RadioButton Name="BtnOverview" Tag="HomeAccount" Content="Übersicht" Style="{StaticResource MainMenuButtonTheme}" IsChecked="True"/>
+                <RadioButton Name="BtnLogging" Tag="MonitorDashboard" Content="Logging" Style="{StaticResource MainMenuButtonTheme}"/>
+                <RadioButton Name="BtnModules" Tag="Workflow" Content="Module" Style="{StaticResource MainMenuButtonTheme}"/>
+                <RadioButton Name="BtnSettings" Tag="SettingsOutline" Content="Einstellungen" Style="{StaticResource MainMenuButtonTheme}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

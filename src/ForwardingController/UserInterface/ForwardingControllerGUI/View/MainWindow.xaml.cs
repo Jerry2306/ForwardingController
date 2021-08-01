@@ -27,5 +27,13 @@ namespace ForwardingControllerGUI.View
         {
             InitializeComponent();
         }
+
+        private void SpTopMenu_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount >= 2)
+                WindowState = (WindowState)(WindowState == 0 ? 2 : 0);
+
+            DragMove();
+        }
     }
 }
