@@ -40,7 +40,7 @@ namespace DefaultModule
             while (_isRunning)
             {
                 Thread.Sleep(5000);
-                MessageBox.Show(Configuration["TestConfiguration"]);
+                //MessageBox.Show(Configuration["TestConfiguration"]);
             }
         }
     }
