@@ -5,6 +5,7 @@ namespace CustomModule.Contract
 {
     public interface ICustomModuleController
     {
+        string IconKind { get; }
         string Name { get; }
         IDictionary<string, string> Configuration { get; set; }
         void Run(IKernel kernel);

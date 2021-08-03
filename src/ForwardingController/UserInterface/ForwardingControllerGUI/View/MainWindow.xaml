@@ -5,40 +5,141 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ForwardingControllerGUI"
         xmlns:vm="clr-namespace:ForwardingControllerGUI.ViewModel"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Forwarding Controller" MinHeight="400" Height="600" Width="1200" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
+        Title="Forwarding Controller"
+        MinHeight="300"
+        Height="600"
+        Width="1200"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        Icon="/Resources/ForwardControllerLogo.png"
+        Closing="Window_Closing">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Border Background="#FF1D1A27" CornerRadius="40">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ProgressBar.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border Background="#FF1F1934" CornerRadius="30">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="112"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Image Source="/Resources/ForwardControllerLogo.png" Margin="0,15,0,0"/>
+            <Image Source="/Resources/ForwardControllerLogo.png" Margin="0,15,0,15"/>
 
-            <StackPanel Name="SpSecondaryMenu" Grid.ColumnSpan="2" MouseDown="SpTopMenu_MouseDown" Background="Transparent">
+            <Border Grid.Column="1" Grid.Row="0" Background="#FF292145" CornerRadius="30" Margin="0,17,10,0">
+                <ListView Background="Transparent"
+                          ItemsSource="{Binding ModulesSubVm.AvailableModules}"
+                          Visibility="{Binding ModulesSubVm.ModuleListVisibility}"
+                          BorderThickness="0">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="false"/>
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton Tag="{Binding IconKind}" Content="{Binding Name}" Style="{StaticResource SecondaryMenuButtonTheme}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Border>
 
+            <StackPanel Name="SpSecondaryMenu" Grid.ColumnSpan="2" MouseDown="SpTopMenu_MouseDown" Background="Transparent" VerticalAlignment="Top" Height="20">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="SizeAll"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
             </StackPanel>
 
-            <StackPanel Name="SpMainMenu" Grid.Column="0" Grid.Row="1" Margin="0,15,0,0" IsEnabled="{Binding IsNavigationEnabled}">
-                <RadioButton Name="BtnOverview" Tag="HomeAccount" Content="Übersicht" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding OverviewCommand}" IsChecked="True"/>
-                <RadioButton Name="BtnLogging" Tag="MonitorDashboard" Content="Logging" Style="{StaticResource MainMenuButtonTheme}"/>
-                <RadioButton Name="BtnModules" Tag="Workflow" Content="Module" Style="{StaticResource MainMenuButtonTheme}"/>
-                <RadioButton Name="BtnSettings" Tag="SettingsOutline" Content="Einstellungen" Style="{StaticResource MainMenuButtonTheme}"/>
-                <RadioButton Name="BtnClose" Tag="CloseBoxOutline" Content="Schließen" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding ExitCommand}" IsChecked="{Binding IsCloseButtnChecked}"/>
-            </StackPanel>
+
+            <Border Grid.Column="0" Grid.Row="1" Background="#FF292145" CornerRadius="30">
+                <StackPanel Margin="0,28,0,0" Name="SpMainMenu" IsEnabled="{Binding IsNavigationEnabled}" VerticalAlignment="Center">
+                    <RadioButton Tag="HomeAccount" Content="Übersicht" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding OverviewCommand}" IsChecked="True"/>
+                    <RadioButton Tag="MonitorDashboard" Content="Logging" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding LoggingCommand}"/>
+                    <RadioButton Tag="Workflow" Content="Module" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding ModulesCommand}"/>
+                    <RadioButton Tag="SettingsOutline" Content="Einstellungen" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding SettingsCommand}"/>
+                    <RadioButton Tag="CloseBoxOutline" Content="Schließen" Style="{StaticResource MainMenuButtonTheme}" Command="{Binding ExitCommand}" IsChecked="{Binding IsCloseButtnChecked}"/>
+                </StackPanel>
+            </Border>
 
             <ContentControl Grid.Row="1" 
                             Grid.Column="1"
                             Content="{Binding CurrentView}"
                             Margin="10"/>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Visibility="{Binding ModulesSubVm.ProgressBar.Visibility}">
+                <TextBlock Text="{Binding ModulesSubVm.ProgressBar.Header}"
+                       FontWeight="DemiBold"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="White"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+
+                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                             Value="{Binding ModulesSubVm.ProgressBar.Value}"
+                             VerticalAlignment="Center"
+                             IsIndeterminate="{Binding ModulesSubVm.ProgressBar.IsIntermediate}"
+                             Foreground="{Binding ModulesSubVm.ProgressBar.Foreground}"
+                             RenderTransformOrigin="0.5,-0.2"
+                             Height="20">
+                    <ProgressBar.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="8" ScaleY="8" CenterX="0" CenterY="-2"/>
+                        </TransformGroup>
+                    </ProgressBar.RenderTransform>
+                </ProgressBar>
+
+                <TextBlock Text="{Binding ModulesSubVm.ProgressBar.Description1}"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"
+                           FontSize="17"
+                           Foreground="#FFBBBBBB"
+                           Margin="10,230,10,0"
+                           TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding ModulesSubVm.ProgressBar.Description2}"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"
+                           FontSize="17"
+                           Foreground="#FFBBBBBB"
+                           Margin="10,10,10,0"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
         </Grid>
     </Border>
 </Window>

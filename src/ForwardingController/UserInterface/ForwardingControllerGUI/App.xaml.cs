@@ -1,30 +1,24 @@
-﻿using CustomModuleUtils.Contract;
-using ForwardingControllerGUI.View;
+﻿using ForwardingControllerGUI.View;
 using ForwardingControllerGUI.ViewModel;
 using Ninject;
 using NinjectBindingManaging;
 using SharedItems.Extensions;
 using System;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ForwardingControllerGUI
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        private MainWindowViewModel _mainVm;
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
             var kernel = GetKernel();
 
-            var vm = LoadMainWindowAndViewModel(kernel);
-
-            LoadCustomModules(kernel, vm);
+            _mainVm = LoadMainWindowAndViewModel(kernel);
         }
 
         private IKernel GetKernel()
@@ -64,21 +58,6 @@ namespace ForwardingControllerGUI
             }
 
             return vm;
-        }
-
-        private void LoadCustomModules(IKernel kernel, MainWindowViewModel vm)
-        {
-            Task.Run(() =>
-            {
-                try
-                {
-                    kernel.Get<ICustomModuleManager>().RunCustomModules(kernel);
-                }
-                catch (Exception exc)
-                {
-                    DisplayException("Error at loading custom modules:", exc);
-                }
-            });
         }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

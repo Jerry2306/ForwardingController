@@ -8,7 +8,8 @@ namespace DefaultModule
 {
     public class ModuleController : ICustomModuleController
     {
-        public string Name => "Default";
+        public string IconKind => "CloudQuestion";
+        public string Name => "Default Module";
         public IDictionary<string, string> Configuration { get; set; }
 
         private IKernel _kernel;

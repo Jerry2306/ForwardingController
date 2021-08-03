@@ -1,12 +1,9 @@
-﻿using System;
-using System.Threading;
-using ForwardingControllerGUI.Core;
+﻿using ForwardingControllerGUI.Core;
 using ForwardingControllerGUI.View.UserControls;
 using Ninject;
 using SharedItems.Model;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Documents;
+using ForwardingControllerGUI.Model;
 
 namespace ForwardingControllerGUI.ViewModel
 {
@@ -17,8 +14,13 @@ namespace ForwardingControllerGUI.ViewModel
         public bool IsNavigationEnabled { get; set; }
         public bool IsCloseButtnChecked { get; set; }
 
-        public RelayCommand ExitCommand { get; set; }
         public RelayCommand OverviewCommand { get; set; }
+        public RelayCommand LoggingCommand { get; set; }
+        public RelayCommand ModulesCommand { get; set; }
+        public RelayCommand SettingsCommand { get; set; }
+        public RelayCommand ExitCommand { get; set; }
+
+        public MainWindowModulesSubViewModel ModulesSubVm { get; set; }
 
         private readonly IKernel _kernel;
 
@@ -28,13 +30,18 @@ namespace ForwardingControllerGUI.ViewModel
         {
             _kernel = kernel;
 
-            SetCurrentView(_kernel.Get<OverviewUserControl>());
-
             IsNavigationEnabled = true;
             IsCloseButtnChecked = false;
 
-            ExitCommand = new RelayCommand(ExitApplication);
             OverviewCommand = new RelayCommand(o => SetCurrentView(_kernel.Get<OverviewUserControl>()));
+            LoggingCommand = new RelayCommand(o => SetCurrentView(null));
+            ModulesCommand = new RelayCommand(o => SetCurrentView(_kernel.Get<CustomModulesUserControl>()));
+            SettingsCommand = new RelayCommand(o => SetCurrentView(null));
+            ExitCommand = new RelayCommand(ExitApplication);
+
+            ModulesSubVm = _kernel.Get<MainWindowModulesSubViewModel>();
+
+            SetCurrentView(_kernel.Get<OverviewUserControl>());
         }
 
         public void ExitApplication(object parameter)
@@ -51,14 +58,21 @@ namespace ForwardingControllerGUI.ViewModel
 
         private void SetCurrentView(object newView)
         {
-            if (CurrentView == null)
-            {
-                CurrentView = newView;
+            if (CurrentView?.GetType() == newView?.GetType())
                 return;
+
+            if (newView?.GetType() == typeof(CustomModulesUserControl))
+            {
+                ModulesSubVm.ModuleListVisibility = Visibility.Visible;
+                ModulesSubVm.ShowProgressBar();
+            }
+            else
+            {
+                ModulesSubVm.ModuleListVisibility = Visibility.Hidden;
+                ModulesSubVm.HideProgressBar();
             }
 
-            if (CurrentView.GetType() != newView.GetType())
-                CurrentView = newView;
+            CurrentView = newView;
         }
     }
 }
