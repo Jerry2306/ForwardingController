@@ -13,22 +13,26 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <Label Content="Anwendung wird beendet, bitte warten und Anwendung nicht schließen!"
+    <DockPanel>
+        <TextBlock Text="Anwendung wird beendet, bitte warten und Anwendung nicht schließen!"
                FontWeight="DemiBold"
                VerticalAlignment="Top"
                HorizontalAlignment="Center"
                FontSize="20"
                Foreground="White"
-               Margin="0,10,0,0"/>
+               Margin="0,10,0,0"
+               TextWrapping="Wrap"
+               DockPanel.Dock="Top"/>
 
         <ProgressBar
             Style="{StaticResource MaterialDesignCircularProgressBar}"
             Value="0"
-            Margin="0,100,0,0"
+            Margin="0,70,0,0"
             VerticalAlignment="Top"
             IsIndeterminate="True"
-            Foreground="#FF7e57c2" RenderTransformOrigin="0.5,0.5">
+            Foreground="#FF7e57c2"
+            RenderTransformOrigin="0.5,0.5"
+            DockPanel.Dock="Top">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="8" ScaleY="8" CenterX="0" CenterY="-6"/>
@@ -36,10 +40,8 @@
             </ProgressBar.RenderTransform>
         </ProgressBar>
 
-        <Grid Background="#0AFFFFFF"
-              Margin="40,270,40,40"
-              Height="170"
-              VerticalAlignment="Top">
+        <StackPanel Background="#0AFFFFFF"
+              Margin="40,160,40,40">
             <Label Content="Status:"
                VerticalAlignment="Top"
                HorizontalAlignment="Left"
@@ -47,21 +49,21 @@
                Foreground="White"
                Margin="10,10,0,0"/>
 
-            <Label Name="LblStateLine1"
-               Content="{Binding StateLine1, UpdateSourceTrigger=PropertyChanged}"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Center"
-               FontSize="17"
-               Foreground="#FFBBBBBB"
-               Margin="0,60,0,0"/>
+            <TextBlock Text="{Binding StateLine1, UpdateSourceTrigger=PropertyChanged}"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       FontSize="17"
+                       Foreground="#FFBBBBBB"
+                       Margin="0,13,0,0"
+                       TextWrapping="Wrap"/>
 
-            <Label Name="LblStateLine2"
-               Content="{Binding StateLine2}"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Center"
-               FontSize="17"
-               Foreground="#FFBBBBBB"
-               Margin="0,105,0,0"/>
-        </Grid>
-    </Grid>
+            <TextBlock Text="{Binding StateLine2}"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       FontSize="17"
+                       Foreground="#FFBBBBBB"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+        </StackPanel>
+    </DockPanel>
 </UserControl>
