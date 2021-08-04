@@ -10,6 +10,7 @@ namespace NinjectBindingManaging
         public INinjectModule[] Bindings { get; }
 
         private static IKernel _kernelInstance;
+        private static object _instanceLock = new object();
 
         public NinjectBindingManager()
         {
@@ -31,8 +32,11 @@ namespace NinjectBindingManaging
 
         public IKernel GetKernel()
         {
-            _kernelInstance = _kernelInstance ?? new StandardKernel(Bindings);
-            return _kernelInstance;
+            lock (_instanceLock)
+            {
+                _kernelInstance = _kernelInstance ?? new StandardKernel(Bindings);
+                return _kernelInstance;
+            }
         }
     }
 }
