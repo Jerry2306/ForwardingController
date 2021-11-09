@@ -1,9 +1,11 @@
-﻿using ForwardingControllerGUI.Core;
+﻿using System.Linq;
+using ForwardingControllerGUI.Core;
 using ForwardingControllerGUI.View.UserControls;
 using Ninject;
 using SharedItems.Model;
 using System.Windows;
 using ForwardingControllerGUI.Model;
+using Ninject.Parameters;
 
 namespace ForwardingControllerGUI.ViewModel
 {
@@ -19,6 +21,7 @@ namespace ForwardingControllerGUI.ViewModel
         public RelayCommand ModulesCommand { get; set; }
         public RelayCommand SettingsCommand { get; set; }
         public RelayCommand ExitCommand { get; set; }
+        public RelayCommand CustomModuleCommand { get; set; }
 
         public MainWindowModulesSubViewModel ModulesSubVm { get; set; }
 
@@ -35,9 +38,10 @@ namespace ForwardingControllerGUI.ViewModel
 
             OverviewCommand = new RelayCommand(o => SetCurrentView(_kernel.Get<OverviewUserControl>()));
             LoggingCommand = new RelayCommand(o => SetCurrentView(null));
-            ModulesCommand = new RelayCommand(o => SetCurrentView(_kernel.Get<CustomModulesUserControl>()));
+            ModulesCommand = new RelayCommand(o => SetCurrentView(_kernel.Get<CustomModulesUserControl>(new ConstructorArgument("module", (object)null))));
             SettingsCommand = new RelayCommand(o => SetCurrentView(null));
             ExitCommand = new RelayCommand(ExitApplication);
+            CustomModuleCommand = new RelayCommand(HandleCustomModuleCommand);
 
             ModulesSubVm = _kernel.Get<MainWindowModulesSubViewModel>();
 
@@ -56,9 +60,16 @@ namespace ForwardingControllerGUI.ViewModel
             SetCurrentView(_kernel.Get<ExitUserControl>());
         }
 
+        private void HandleCustomModuleCommand(object parameter)
+        {
+            var clickedModule = ModulesSubVm.AvailableModules.FirstOrDefault(x => x.Name == parameter.ToString());
+
+            SetCurrentView(_kernel.Get<CustomModulesUserControl>(new ConstructorArgument("module", clickedModule)));
+        }
+
         private void SetCurrentView(object newView)
         {
-            if (CurrentView?.GetType() == newView?.GetType())
+            if (CurrentView?.GetType() != typeof(CustomModulesUserControl) && CurrentView?.GetType() == newView?.GetType())
                 return;
 
             if (newView?.GetType() == typeof(CustomModulesUserControl))

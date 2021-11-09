@@ -84,6 +84,10 @@
     <Compile Include="View\UserControls\OverviewUserControl.xaml.cs">
       <DependentUpon>OverviewUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Theme\MainButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

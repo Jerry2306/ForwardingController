@@ -2,7 +2,6 @@
 using Ninject;
 using System.Collections.Generic;
 using System.Threading;
-using System.Windows;
 
 namespace DefaultModule
 {
@@ -12,9 +11,13 @@ namespace DefaultModule
         public string Name => "Default Module";
         public IDictionary<string, string> Configuration { get; set; }
 
+        public List<string> TempLog { get; set; } = new List<string>();
+
         private IKernel _kernel;
         private Thread _t;
+
         private bool _isRunning = false;
+        public bool IsRunning => _isRunning;
 
         public void Run(IKernel kernel)
         {
@@ -37,10 +40,12 @@ namespace DefaultModule
         private void ThreadWork()
         {
             _isRunning = true;
-
+            var i = 0;
             while (_isRunning)
             {
+                i++;
                 Thread.Sleep(5000);
+                TempLog.Add("Test log - " + i);
                 //MessageBox.Show(Configuration["TestConfiguration"]);
             }
         }

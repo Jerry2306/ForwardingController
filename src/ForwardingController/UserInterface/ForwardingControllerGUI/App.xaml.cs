@@ -4,6 +4,7 @@ using Ninject;
 using NinjectBindingManaging;
 using SharedItems.Extensions;
 using System;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 
@@ -50,6 +51,11 @@ namespace ForwardingControllerGUI
                 };
 
                 window.Show();
+            }
+            catch (ReflectionTypeLoadException exc)
+            {
+                DisplayException("Fatal error at reflectionloading main window -> commonly at loading custom modules:", exc);
+                Current.Shutdown(-1);
             }
             catch (Exception exc)
             {

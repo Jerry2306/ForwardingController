@@ -49,7 +49,7 @@ namespace ForwardingControllerGUI.ViewModel
             {
                 try
                 {
-                    Thread.Sleep(10000);
+                    Thread.Sleep(1000);
                     _customModuleManager.RunCustomModules(kernel);
                     CustomModulesLoadedSuccessful();
                 }
