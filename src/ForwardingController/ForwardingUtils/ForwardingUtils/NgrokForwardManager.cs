@@ -28,7 +28,7 @@ namespace ForwardingUtils
 
         public TunnelEntity StartTunnel(StartTunnelEntity entity)
         {
-            using (var request = new HttpRequestMessage(new HttpMethod("POST"), CombineUrl(_config.ForwardingConfiguration.APIUrl, "tunnels")))
+            using (var request = new HttpRequestMessage(new HttpMethod("POST"), CombineUrl(_config.ForwardingConfiguration.ApiUrl, "tunnels")))
             {
                 request.Content = new StringContent(JsonConvert.SerializeObject(entity));
                 request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
@@ -42,7 +42,7 @@ namespace ForwardingUtils
 
         public void StopTunnel(string name)
         {
-            using (var request = new HttpRequestMessage(new HttpMethod("DELETE"), CombineUrl(_config.ForwardingConfiguration.APIUrl, $"tunnels/{name}")))
+            using (var request = new HttpRequestMessage(new HttpMethod("DELETE"), CombineUrl(_config.ForwardingConfiguration.ApiUrl, $"tunnels/{name}")))
             {
                 var response = TaskAwaiter.WaitForResult(_httpClient.SendAsync(request));
 
@@ -53,7 +53,7 @@ namespace ForwardingUtils
 
         public TunnelListEntity ListTunnels()
         {
-            using (var request = new HttpRequestMessage(new HttpMethod("GET"), CombineUrl(_config.ForwardingConfiguration.APIUrl, "tunnels")))
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), CombineUrl(_config.ForwardingConfiguration.ApiUrl, "tunnels")))
             {
                 var response = TaskAwaiter.WaitForResult(_httpClient.SendAsync(request));
 
@@ -64,7 +64,7 @@ namespace ForwardingUtils
 
         public TunnelEntity GetTunnel(string name)
         {
-            using (var request = new HttpRequestMessage(new HttpMethod("GET"), CombineUrl(_config.ForwardingConfiguration.APIUrl, $"tunnels/{name}")))
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), CombineUrl(_config.ForwardingConfiguration.ApiUrl, $"tunnels/{name}")))
             {
                 var response = TaskAwaiter.WaitForResult(_httpClient.SendAsync(request));
 
