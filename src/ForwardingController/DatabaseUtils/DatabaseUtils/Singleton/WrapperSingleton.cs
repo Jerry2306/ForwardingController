@@ -23,7 +23,7 @@ namespace DatabaseUtils.Singleton
 
         private static IDatabaseManager<TEntity> SwitchInstances(string cs)
         {
-            var tableName = (Attribute.GetCustomAttribute(typeof(NgrokTableEntity), typeof(TableNameAttribute)) as TableNameAttribute)?.GetTableName();
+            var tableName = (Attribute.GetCustomAttribute(typeof(TEntity), typeof(TableNameAttribute)) as TableNameAttribute)?.GetTableName();
             if (string.IsNullOrEmpty(tableName))
                 throw new ArgumentNullException($"TableNameAttribute must be declared in database entities! Entity: {nameof(NgrokTableEntity)}");
 
