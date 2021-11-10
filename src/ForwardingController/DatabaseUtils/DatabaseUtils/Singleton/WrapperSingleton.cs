@@ -33,7 +33,7 @@ namespace DatabaseUtils.Singleton
                 return (IDatabaseManager<TEntity>)_ngrokTableEntityWrapperInstance;
             }
 
-            throw new InstanceNotFoundException($"Instance for type '{typeof(TEntity).Name}' is not implemented in database signleton!");
+            throw new InstanceNotFoundException($"Instance for type '{typeof(TEntity).Name}' is not implemented in database singleton!");
         }
     }
 }
