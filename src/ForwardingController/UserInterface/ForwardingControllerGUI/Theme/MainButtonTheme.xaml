@@ -13,7 +13,7 @@
                 </Setter.Value>
             </Setter>
 
-            <Setter Property="Background" Value="#FF29243E"/>
+            <Setter Property="Background" Value="#FF39344E"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18"/>
@@ -26,6 +26,10 @@
 
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="#FF3F3B4D"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#FF29243E"/>
             </Trigger>
         </Style.Triggers>
     </Style>
