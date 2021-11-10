@@ -20,15 +20,6 @@ namespace ForwardingControllerGUI.Helper
             }
         }
 
-        public static void CancelAction()
-        {
-            lock (_instanceLock)
-            {
-                if (_instance != null)
-                    _instance._cancel = true;
-            }
-        }
-
         public static void AttachAction(int interval, Action action)
         {
             lock (_instanceLock)

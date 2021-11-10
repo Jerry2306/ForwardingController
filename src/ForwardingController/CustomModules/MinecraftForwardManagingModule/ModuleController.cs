@@ -1,11 +1,7 @@
 ﻿using CustomModule.Contract;
 using Ninject;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace MinecraftForwardManagingModule
 {
@@ -30,6 +26,7 @@ namespace MinecraftForwardManagingModule
         public void Stop()
         {
             _isRunning = false;
+            Thread.Sleep(2000);
             TempLog.Add("Test Logging Eintrag Stop...");
         }
     }

@@ -1,11 +1,11 @@
 ﻿using ForwardingControllerGUI.Core;
+using ForwardingControllerGUI.Helper;
 using ForwardingControllerGUI.View.UserControls;
 using Ninject;
 using Ninject.Parameters;
 using SharedItems.Model;
 using System.Linq;
 using System.Windows;
-using ForwardingControllerGUI.Helper;
 
 namespace ForwardingControllerGUI.ViewModel
 {
@@ -80,7 +80,6 @@ namespace ForwardingControllerGUI.ViewModel
             }
             else
             {
-                BackgroundUserControlRefreshHelper.CancelAction();
                 ModulesSubVm.ModuleListVisibility = Visibility.Hidden;
                 ModulesSubVm.HideProgressBar();
             }
