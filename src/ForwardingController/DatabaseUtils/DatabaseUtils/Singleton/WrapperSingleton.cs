@@ -11,7 +11,7 @@ namespace DatabaseUtils.Singleton
     {
         private static readonly object _instanceLock = new object();
 
-        private static NgrokTableEntityWrapper _ngrokTableEntityWrapperInstance = null;
+        private static NgrokTableEntityWrapper _ngrokTableEntityWrapperInstance;
 
         public static IDatabaseManager<TEntity> GetInstance(string cs)
         {
@@ -24,8 +24,9 @@ namespace DatabaseUtils.Singleton
         private static IDatabaseManager<TEntity> SwitchInstances(string cs)
         {
             var tableName = (Attribute.GetCustomAttribute(typeof(TEntity), typeof(TableNameAttribute)) as TableNameAttribute)?.GetTableName();
+
             if (string.IsNullOrEmpty(tableName))
-                throw new ArgumentNullException($"TableNameAttribute must be declared in database entities! Entity: {nameof(NgrokTableEntity)}");
+                throw new ArgumentNullException($"TableNameAttribute must be declared in database entities! Entity: {nameof(TEntity)}");
 
             if (typeof(TEntity) == typeof(NgrokTableEntity))
             {
