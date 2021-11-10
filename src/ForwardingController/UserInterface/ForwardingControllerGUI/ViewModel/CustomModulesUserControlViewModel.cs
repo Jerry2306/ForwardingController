@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using CustomModule.Contract;
+﻿using CustomModule.Contract;
 using ForwardingControllerGUI.Core;
+using ForwardingControllerGUI.Helper;
+using ForwardingControllerGUI.Model;
 using Ninject;
 using SharedItems.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 
 namespace ForwardingControllerGUI.ViewModel
 {
@@ -16,9 +18,9 @@ namespace ForwardingControllerGUI.ViewModel
 
         public RelayCommand StartCommand { get; set; }
         public RelayCommand StopCommand { get; set; }
+        public RelayCommand ClearLogCommand { get; set; }
 
-        public bool IsStartButtonEnabled { get; set; }
-        public bool IsStopButtonEnabled { get; set; }
+        public CustomModulesSubModel CustomModulesSubModel { get; set; }
 
         private IKernel _kernel;
         public CustomModulesUserControlViewModel(ICustomModuleController module, IKernel kernel)
@@ -33,23 +35,22 @@ namespace ForwardingControllerGUI.ViewModel
             CurrentModule = module;
             ContentVisibility = Visibility.Visible;
 
-            IsStartButtonEnabled = !CurrentModule.IsRunning;
-            IsStopButtonEnabled = !IsStartButtonEnabled;
+            CustomModulesSubModel = new CustomModulesSubModel(module);
+
+            BackgroundUserControlRefreshHelper.AttachAction(333, RefreshWork);
 
             StartCommand = new RelayCommand(StartModule);
             StopCommand = new RelayCommand(StopModule);
+            ClearLogCommand = new RelayCommand(ClearLog);
         }
 
         private void StartModule(object parameter)
         {
             Task.Run(() =>
             {
-                CurrentModule.TempLog = new List<string>(new[] { "Starting..." });
+                CurrentModule.TempLog.Add("Starting...");
                 CurrentModule.Run(_kernel);
-                CurrentModule.TempLog = new List<string>(new[] { "Started..." });
-
-                IsStartButtonEnabled = !CurrentModule.IsRunning;
-                IsStopButtonEnabled = !IsStartButtonEnabled;
+                CurrentModule.TempLog.Add("Started...");
             });
         }
 
@@ -57,13 +58,35 @@ namespace ForwardingControllerGUI.ViewModel
         {
             Task.Run(() =>
             {
-                CurrentModule.TempLog = new List<string>(new[] { "Stopping..." });
+                CurrentModule.TempLog.Add("Stopping...");
                 CurrentModule.Stop();
-                CurrentModule.TempLog = new List<string>(new[] { "Stopped..." });
-
-                IsStartButtonEnabled = !CurrentModule.IsRunning;
-                IsStopButtonEnabled = !IsStartButtonEnabled;
+                CurrentModule.TempLog.Add("Stopped...");
             });
+        }
+
+        private void ClearLog(object parameter) => CurrentModule.TempLog.Clear();
+
+        private void RefreshWork()
+        {
+            if (CurrentModule.IsRunning)
+            {
+                CustomModulesSubModel.ActiveColor = Brushes.Green;
+                CustomModulesSubModel.ActiveText = "Active";
+                CustomModulesSubModel.IsStartButtonEnabled = false;
+                CustomModulesSubModel.IsStopButtonEnabled = true;
+            }
+            else
+            {
+                CustomModulesSubModel.ActiveColor = Brushes.Red;
+                CustomModulesSubModel.ActiveText = "Inactive";
+                CustomModulesSubModel.IsStartButtonEnabled = true;
+                CustomModulesSubModel.IsStopButtonEnabled = false;
+            }
+
+            var list = new List<string>();
+            CurrentModule.TempLog.ForEach(x => list.Add(x));
+
+            CustomModulesSubModel.Logs = list;
         }
     }
 }

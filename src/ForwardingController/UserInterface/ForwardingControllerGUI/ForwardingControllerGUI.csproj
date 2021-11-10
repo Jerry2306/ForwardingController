@@ -71,6 +71,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Helper\BackgroundUserControlRefreshHelper.cs" />
+    <Compile Include="Model\CustomModulesSubModel.cs" />
     <Compile Include="Model\ProgressBarModel.cs" />
     <Compile Include="ViewModel\CustomModulesUserControlViewModel.cs" />
     <Compile Include="ViewModel\ExitUserControlViewModel.cs" />

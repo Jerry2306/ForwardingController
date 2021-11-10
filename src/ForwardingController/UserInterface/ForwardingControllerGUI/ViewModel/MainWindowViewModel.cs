@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using ForwardingControllerGUI.Core;
+﻿using ForwardingControllerGUI.Core;
 using ForwardingControllerGUI.View.UserControls;
 using Ninject;
-using SharedItems.Model;
-using System.Windows;
-using ForwardingControllerGUI.Model;
 using Ninject.Parameters;
+using SharedItems.Model;
+using System.Linq;
+using System.Windows;
+using ForwardingControllerGUI.Helper;
 
 namespace ForwardingControllerGUI.ViewModel
 {
@@ -46,6 +46,7 @@ namespace ForwardingControllerGUI.ViewModel
             ModulesSubVm = _kernel.Get<MainWindowModulesSubViewModel>();
 
             SetCurrentView(_kernel.Get<OverviewUserControl>());
+            BackgroundUserControlRefreshHelper.Initialize();
         }
 
         public void ExitApplication(object parameter)
@@ -79,6 +80,7 @@ namespace ForwardingControllerGUI.ViewModel
             }
             else
             {
+                BackgroundUserControlRefreshHelper.CancelAction();
                 ModulesSubVm.ModuleListVisibility = Visibility.Hidden;
                 ModulesSubVm.HideProgressBar();
             }
