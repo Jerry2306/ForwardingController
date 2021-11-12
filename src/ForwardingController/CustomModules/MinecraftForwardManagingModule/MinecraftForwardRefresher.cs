@@ -13,12 +13,15 @@ namespace MinecraftForwardManagingModule
     {
         private readonly ModuleController _moduleController;
         private readonly IForwardManager _forwardManager;
-        private readonly IDatabaseManager<NgrokTableEntity> _databaseManager;
+        private readonly IKernel _kernel;
+
+        private IDatabaseManager<NgrokTableEntity> _databaseManager;
         public MinecraftForwardRefresher(ModuleController moduleController, IKernel kernel)
         {
             _moduleController = moduleController;
             _forwardManager = kernel.Get<IForwardManager>();
             _databaseManager = kernel.Get<IDatabaseManager<NgrokTableEntity>>();
+            _kernel = kernel;
         }
 
         public void RefreshCycle()
@@ -55,12 +58,11 @@ namespace MinecraftForwardManagingModule
                 }
                 else
                     _databaseManager.Insert(new NgrokTableEntity(currentTunnel.name, currentTunnel.public_url, DateTime.Now));
-
-
             }
             catch (Exception e)
             {
-                _moduleController.TempLog.Add("Error at fetching database: " + e.Message);
+                _moduleController.TempLog.Add("Error at fetching database (trying new instancing of database manager): " + e.Message);
+                _databaseManager = _kernel.Get<IDatabaseManager<NgrokTableEntity>>();
             }
         }
     }

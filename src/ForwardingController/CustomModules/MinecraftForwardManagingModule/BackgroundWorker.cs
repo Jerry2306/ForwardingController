@@ -13,17 +13,20 @@ namespace MinecraftForwardManagingModule
         public bool IsRunning { get; set; }
 
         private readonly ModuleController _moduleController;
-        private readonly MinecraftForwardRefresher _minecraftForwardRefresher;
+        private readonly IKernel _kernel;
+
+        private MinecraftForwardRefresher _minecraftForwardRefresher;
         private Thread _t;
         public BackgroundWorker(ModuleController moduleController, IKernel kernel)
         {
             IsRunning = false;
             _moduleController = moduleController;
-            _minecraftForwardRefresher = new MinecraftForwardRefresher(moduleController, kernel);
+            _kernel = kernel;
         }
 
         public void Start()
         {
+            _minecraftForwardRefresher = new MinecraftForwardRefresher(_moduleController, _kernel);
             IsRunning = true;
             _t = new Thread(RepeatThreadWork) { IsBackground = true };
             _t.SetApartmentState(ApartmentState.STA);
@@ -41,7 +44,7 @@ namespace MinecraftForwardManagingModule
             _moduleController.TempLog.Add("Module stopped...");
         }
 
-        private int _interval = 10_000;
+        private int _interval = 240_000;
         private int _counter = 300_000;
         private void RepeatThreadWork()
         {
