@@ -10,9 +10,6 @@ namespace DatabaseUtils.Singleton
     public static class WrapperSingleton<TEntity> where TEntity : BaseDatabaseEntity
     {
         private static readonly object _instanceLock = new object();
-
-        private static NgrokTableEntityWrapper _ngrokTableEntityWrapperInstance;
-
         public static IDatabaseManager<TEntity> GetInstance(string cs)
         {
             lock (_instanceLock)
@@ -29,12 +26,9 @@ namespace DatabaseUtils.Singleton
                 throw new ArgumentNullException($"TableNameAttribute must be declared in database entities! Entity: {nameof(TEntity)}");
 
             if (typeof(TEntity) == typeof(NgrokTableEntity))
-            {
-                _ngrokTableEntityWrapperInstance = _ngrokTableEntityWrapperInstance ?? new NgrokTableEntityWrapper(cs, tableName);
-                return (IDatabaseManager<TEntity>)_ngrokTableEntityWrapperInstance;
-            }
+                return (IDatabaseManager<TEntity>)new NgrokTableEntityWrapper(cs, tableName);
 
-            throw new InstanceNotFoundException($"Instance for type '{typeof(TEntity).Name}' is not implemented in database singleton!");
+            throw new InstanceNotFoundException($"Instance for type '{typeof(TEntity).Name}' is not implemented in database wrapper helper!");
         }
     }
 }

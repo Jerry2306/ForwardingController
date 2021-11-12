@@ -11,19 +11,21 @@ namespace DatabaseUtils
     public class MySqlDatabaseManager<TEntity> : IDatabaseManager<TEntity> where TEntity : BaseDatabaseEntity
     {
         private readonly string _cs;
+        private readonly IDatabaseManager<TEntity> _entityWrapperInstance;
         public MySqlDatabaseManager(ISettingsManager settingsManager)
         {
             _cs = settingsManager.Get<AppSettings>().DatabaseConfiguration.ConnectionString;
+            _entityWrapperInstance = WrapperSingleton<TEntity>.GetInstance(_cs);
         }
 
-        public IEnumerable<TEntity> GetAll() => WrapperSingleton<TEntity>.GetInstance(_cs).GetAll();
+        public IEnumerable<TEntity> GetAll() => _entityWrapperInstance.GetAll();
 
-        public IEnumerable<TEntity> GetAll(Func<TEntity, bool> predicate) => WrapperSingleton<TEntity>.GetInstance(_cs).GetAll(predicate);
+        public IEnumerable<TEntity> GetAll(Func<TEntity, bool> predicate) => _entityWrapperInstance.GetAll(predicate);
 
-        public TEntity Insert(TEntity e) => WrapperSingleton<TEntity>.GetInstance(_cs).Insert(e);
+        public TEntity Insert(TEntity e) => _entityWrapperInstance.Insert(e);
 
-        public void Update(TEntity e) => WrapperSingleton<TEntity>.GetInstance(_cs).Update(e);
+        public void Update(TEntity e) => _entityWrapperInstance.Update(e);
 
-        public void Delete(TEntity e) => WrapperSingleton<TEntity>.GetInstance(_cs).Delete(e);
+        public void Delete(TEntity e) => _entityWrapperInstance.Delete(e);
     }
 }
