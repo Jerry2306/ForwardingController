@@ -44,13 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundWorker.cs" />
+    <Compile Include="MinecraftForwardRefresher.cs" />
     <Compile Include="ModuleController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrossCutting\DatabaseUtils.SharedItems\DatabaseUtils.SharedItems.csproj">
+      <Project>{611ee9ef-139c-46f1-ad31-e012c64e530a}</Project>
+      <Name>DatabaseUtils.SharedItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrossCutting\ForwardingUtils.SharedItems\ForwardingUtils.SharedItems.csproj">
+      <Project>{72d936b7-ee29-4172-b3b8-086caee31e61}</Project>
+      <Name>ForwardingUtils.SharedItems</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CustomModuleUtils\CustomModules\CustomModule.Contract\CustomModule.Contract.csproj">
       <Project>{10582f35-561e-49a3-b240-055465468127}</Project>
       <Name>CustomModule.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DatabaseUtils\DatabaseUtils.Contract\DatabaseUtils.Contract.csproj">
+      <Project>{9a623190-194b-4945-8f3e-cf842285f6b6}</Project>
+      <Name>DatabaseUtils.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ForwardingUtils\ForwardingUtils.Contract\ForwardingUtils.Contract.csproj">
+      <Project>{4eb82cc4-e4c3-4c88-bc01-a1c8126175fa}</Project>
+      <Name>ForwardingUtils.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +76,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

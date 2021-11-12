@@ -1,7 +1,6 @@
 ﻿using CustomModule.Contract;
 using Ninject;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace MinecraftForwardManagingModule
 {
@@ -11,23 +10,21 @@ namespace MinecraftForwardManagingModule
         public string IconKind => "Minecraft";
 
         public IDictionary<string, string> Configuration { get; set; }
-
-        private bool _isRunning = false;
-        public bool IsRunning => _isRunning;
+        
+        public bool IsRunning => _backgroundWorker?.IsRunning ?? false;
 
         public List<string> TempLog { get; set; } = new List<string>();
 
+        private BackgroundWorker _backgroundWorker;
         public void Run(IKernel kernel)
         {
-            TempLog.Add("Test Logging Eintrag Start...");
-            _isRunning = true;
+            _backgroundWorker = new BackgroundWorker(this, kernel);
+            _backgroundWorker.Start();
         }
 
         public void Stop()
         {
-            _isRunning = false;
-            Thread.Sleep(2000);
-            TempLog.Add("Test Logging Eintrag Stop...");
+            _backgroundWorker.Stop();
         }
     }
 }
