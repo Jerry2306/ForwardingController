@@ -9,7 +9,7 @@ namespace NinjectBindingManaging.Bindings
     {
         public override void Load()
         {
-            Bind<IDatabaseManager<NgrokTableEntity>>().To<MySqlDatabaseManager<NgrokTableEntity>>().InSingletonScope();
+            Bind<IDatabaseManager<NgrokTableEntity>>().To<MySqlDatabaseManager<NgrokTableEntity>>();
         }
     }
 }
