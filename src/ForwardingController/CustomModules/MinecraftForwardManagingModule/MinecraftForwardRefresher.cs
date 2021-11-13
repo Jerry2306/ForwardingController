@@ -65,5 +65,36 @@ namespace MinecraftForwardManagingModule
                 _databaseManager = _kernel.Get<IDatabaseManager<NgrokTableEntity>>();
             }
         }
+
+        public void TryStopForward()
+        {
+            var forwardName = _moduleController.Configuration["MinecraftForwardName"];
+            try
+            {
+                var currentTunnel = _forwardManager.ListTunnels().tunnels?.FirstOrDefault(x => x.name == forwardName); ;
+
+                if (currentTunnel != null)
+                    _forwardManager.StopTunnel(currentTunnel.name);
+            }
+            catch (Exception e)
+            {
+                _moduleController.TempLog.Add("Error at stopping mc tunnel: " + e.Message);
+            }
+
+            try
+            {
+                var tunnelEntity = _databaseManager.GetAll(x => x.ConnectionName == forwardName).FirstOrDefault();
+
+                if (tunnelEntity != null)
+                {
+                    tunnelEntity.ConnectionAddress = string.Empty;
+                    _databaseManager.Update(tunnelEntity);
+                }
+            }
+            catch (Exception e)
+            {
+                _moduleController.TempLog.Add("Error at clearing database entry: " + e.Message);
+            }
+        }
     }
 }

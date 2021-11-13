@@ -41,6 +41,7 @@ namespace MinecraftForwardManagingModule
             {
                 Thread.Sleep(10);
             }
+            _minecraftForwardRefresher.TryStopForward();
             _moduleController.TempLog.Add("Module stopped...");
         }
 
